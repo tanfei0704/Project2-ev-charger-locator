@@ -1,0 +1,23 @@
+    <h2>Search for nearby EV charging stations</h2>
+    <form id="search-form">
+        <label for="search" class="form-label fs-5 p-2 b-primary rounded-4">Enter a location (address, place, or city)</label>
+        <input type="text" class="form-control input-padding-2 w-50 mx-auto shadow-lg p-3 mb-5 bg-body-tertiary rounded" id="search">
+        <button type="submit" id="search-btn" class="btn btn-info m-3 rounded-2 b-primary">Search</button>
+    </form>
+    {{!-- <a href="/partials/login"></a> --}}
+    <p class="text-primary fs-4">Welcome {{user.email}}</p>
+
+    <p class="fs-3">Starting location: {{user.location.freeformAddress}}</p>
+    <p></p>
+    <div id="nearby-stations"></div>
+    <div id="fav-stations"><h3 class="fs-3">Your Saved Stations</h3></div>
+    <div class="card-container row">
+    {{#each user.user_by_station as |station|}}
+    <div class="card col-3" style="width:18rem">
+    <h5 class="card-title custom-title-class h5">{{station.name}}</h5>
+    <p>{{station.freeformAddress}}</p>
+    <button type="click" data-id="{{station.id}}" id="delete-btn" class="m-3 rounded-2 btn btn-info">Delete</button>
+    </div>
+    {{/each}}
+    </div>
+    <script src="/js/search.js"></script>
